@@ -29,6 +29,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN useradd centos && echo 'centos ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER centos
 
+RUN npm set prefix $HOME/.npm
+RUN npm install -g vue-cli npm-check-updates
 RUN composer config -g repos.packagist composer https://packagist.jp && composer global require hirak/prestissimo
 RUN composer global require laravel/installer
 
