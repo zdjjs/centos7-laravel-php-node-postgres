@@ -18,7 +18,7 @@ RUN yum update -y \
 http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
 https://download.postgresql.org/pub/repos/yum/${POSTGRES_MAJOR}.${POSTGRES_MINOR}/redhat/rhel-7-x86_64/pgdg-centos${POSTGRES_MAJOR}${POSTGRES_MINOR}-${POSTGRES_MAJOR}.${POSTGRES_MINOR}-${POSTGRES_REVISION}.noarch.rpm
 
-RUN yum groupinstall -y base
+RUN yum groupinstall -y base core
 
 RUN curl -sL https://rpm.nodesource.com/setup_${NODE_VERSION}.x | bash -
 
