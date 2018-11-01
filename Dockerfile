@@ -18,7 +18,9 @@ https://download.postgresql.org/pub/repos/yum/${POSTGRES_MAJOR}.${POSTGRES_MINOR
 && curl -sSL https://rpm.nodesource.com/setup_${NODE_VERSION}.x | bash - \
 && curl -sSL https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo
 
-RUN yum groups mark convert && yum groupinstall -y base core
+RUN yum groups mark convert
+RUN yum groupinstall -y base
+RUN yum groupinstall -y core
 RUN yum install -y --enablerepo=remi,remi-php${PHP_VERSION} php php-devel php-mbstring php-pdo php-pgsql php-gd php-xml php-mcrypt php-zip php-intl libzip-devel nodejs postgresql${POSTGRES_MAJOR}${POSTGRES_MINOR} yarn
 
 RUN curl -sSL https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
