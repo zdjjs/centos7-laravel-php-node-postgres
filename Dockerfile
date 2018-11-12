@@ -9,7 +9,7 @@ PHP_VERSION=72 \
 POSTGRES_MAJOR=9 \
 POSTGRES_MINOR=6 \
 POSTGRES_REVISION=3 \
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/centos/.local/bin:/home/centos/bin:/home/centos/.composer/vendor/bin:/home/centos/.yarn/bin
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/centos/.local/bin:/home/centos/bin:/home/centos/.composer/vendor/bin:/home/centos/.yarn/bin:/var/www/html/vendor/bin
 
 RUN yum update -y \
 && yum install -y epel-release \
