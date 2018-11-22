@@ -17,10 +17,17 @@ http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
 https://download.postgresql.org/pub/repos/yum/${POSTGRES_MAJOR}.${POSTGRES_MINOR}/redhat/rhel-7-x86_64/pgdg-centos${POSTGRES_MAJOR}${POSTGRES_MINOR}-${POSTGRES_MAJOR}.${POSTGRES_MINOR}-${POSTGRES_REVISION}.noarch.rpm \
 && curl -sSL https://rpm.nodesource.com/setup_${NODE_VERSION}.x | bash - \
 && curl -sSL https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo \
-&& yum groups mark convert \
-&& yum groupinstall -y base \
-&& yum groupinstall -y core \
-&& yum install -y --enablerepo=remi,remi-php${PHP_VERSION} php php-devel php-mbstring php-pdo php-pgsql php-gd php-xml php-mcrypt php-zip php-intl libzip-devel nodejs postgresql${POSTGRES_MAJOR}${POSTGRES_MINOR} yarn \
+&& yum groups mark convert
+
+RUN yum groupinstall -y base \
+&& rm -rf /var/cache/yum/* \
+&& yum clean all
+
+RUN yum groupinstall -y core \
+&& rm -rf /var/cache/yum/* \
+&& yum clean all
+
+RUN yum install -y --enablerepo=remi,remi-php${PHP_VERSION} php php-devel php-mbstring php-pdo php-pgsql php-gd php-xml php-mcrypt php-zip php-intl libzip-devel nodejs postgresql${POSTGRES_MAJOR}${POSTGRES_MINOR} yarn \
 && rm -rf /var/cache/yum/* \
 && yum clean all
 
